@@ -321,8 +321,8 @@ def create_sampling_ui(model_config_map, inpainting=False):
                     negative_prompt = gr.Textbox(show_label=False, placeholder="Negative prompt", visible=False)
                     video_path = gr.Textbox(label="Video Path", placeholder="Enter video file path")
                     video_file = gr.File(label="Upload Video File")
-                    audio_prompt_file = gr.File(label="Upload Audio Prompt File", visible=False)
-                    audio_prompt_path = gr.Textbox(label="Audio Prompt Path", placeholder="Enter audio file path", visible=False)
+                    audio_prompt_file = gr.File(label="Upload Audio Prompt File", visible=True)
+                    audio_prompt_path = gr.Textbox(label="Audio Prompt Path", placeholder="Enter audio file path", visible=True)
             with gr.Row():
                 with gr.Column(scale=6):
                     with gr.Accordion("Video Params", open=False):                
@@ -345,7 +345,7 @@ def create_sampling_ui(model_config_map, inpainting=False):
                         cfg_rescale_slider = gr.Slider(minimum=0.0, maximum=1, step=0.01, value=0.0, label="CFG Rescale Amount")
             with gr.Row():
                 with gr.Column(scale=4):
-                    with gr.Accordion("Init Audio", open=False, visible=False):
+                    with gr.Accordion("Init Audio", open=False, visible=True):
                         init_audio_checkbox = gr.Checkbox(label="Use Init Audio")
                         init_audio_input = gr.Audio(label="Init Audio")
                         init_noise_level_slider = gr.Slider(minimum=0.1, maximum=100.0, step=0.01, value=0.1, label="Init Noise Level")
@@ -401,7 +401,7 @@ def create_sampling_ui(model_config_map, inpainting=False):
                 with gr.Column(scale=6):
                     video_output = gr.Video(label="Output Video", interactive=False)
                     audio_output = gr.Audio(label="Output Audio", interactive=False)
-                    send_to_init_button = gr.Button("Send to Init Audio", scale=1, visible=False)
+                    send_to_init_button = gr.Button("Send to Init Audio", scale=1, visible=True)
             send_to_init_button.click(
                 fn=lambda audio: audio,
                 inputs=[audio_output],
